@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingTop="@dimen/default_margin_small"
+    android:paddingBottom="@dimen/default_margin">
+
+    <EditText
+        android:id="@+id/edit_text"
+        style="@style/EditTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="0123456789"
+        android:gravity="start|top"
+        android:hint="@string/fragment_create_upc_a_hint"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:lines="1"
+        android:maxLength="11"
+        android:maxLines="1"
+        android:padding="@dimen/default_text_size_very_small" />
+</FrameLayout>

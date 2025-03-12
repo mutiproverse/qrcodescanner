@@ -1,0 +1,91 @@
+<!--
+  Copyright 2018,2021-2023 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2019,2023 Kévin L. <kevinliste@framalistes.org>.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/local_activity.svg#icon"/></svg> Demandes de ressources</h3>
+
+        <p>Lorsqu'une URL est chargée, elle effectue généralement un certain nombre de requêtes de ressources pour le CSS, JavaScript, des images et d'autres fichiers.
+            Les détails sur ces requêtes peuvent être consultés dans la vue Requêtes.
+            Le panneau de navigation contient un lien vers la vue Requêtes et indique également le nombre de requêtes bloquées.
+            Un appui sur une requête affiche les détails de la raison pour laquelle elle a été autorisée ou bloquée.</p>
+
+        <img class="center" src="images/request_details.png"/>
+
+        <p>Privacy Browser inclue quatre <a href="https://easylist.to/">listes communes de filtres</a> basées sur la <a href="https://adblockplus.org/filters">syntaxe d'Adblock</a>:
+            EasyList, EasyPrivacy, Fanboy’s Annoyance List, and Fanboy’s Social Blocking List.
+            Ces listes de filtres sont traitées par Privacy Browser dans les 22 sous-listes suivantes, qui vérifient les demandes de ressources dans l'ordre indiqué.</p>
+
+        <ol>
+            <li>Liste principale d'autorisation</li>
+            <li>Liste finale d'autorisation</li>
+            <li>Liste d'autorisation de domaine</li>
+            <li>Liste initiale d'autorisation de domaine</li>
+            <li>Liste finale d'autorisation de domaine</li>
+            <li>Liste d'autorisation de tiers</li>
+            <li>Liste d'autorisation de domaine tiers</li>
+            <li>Liste initiale d'autorisation de domaine tiers</li>
+            <li>Liste principale de blocage</li>
+            <li>Liste initiale de blocage</li>
+            <li>Liste finale de blocage</li>
+            <li>Liste de blocage de domaine</li>
+            <li>Liste initiale de blocage de domaine</li>
+            <li>Liste finale de blocage de domaine</li>
+            <li>Expression régulière de blocage de domaine</li>
+            <li>Liste de blocage de tiers</li>
+            <li>Liste initiale de blocage de domaine tiers</li>
+            <li>Liste de blocage de domaine tiers</li>
+            <li>Liste initiale de blocage de domaine tiers</li>
+            <li>Expression régulière de blocage de tiers</li>
+            <li>Expression régulière de blocage de domaine tiers</li>
+            <li>Liste d'expression régulière de blocage</li>
+        </ol>
+
+        <p>Les listes initiales sont comparées au début de l'URL. Les listes finales sont comparées à la fin de l'URL. Les listes de domaines ne vérifient que certains domaines.
+            Les listes tierces ne s'appliquent que si le domaine racine de la demande est différent du domaine racine de l'URL principale.
+            Les listes d'expressions régulières respectent la <a href="https://en.wikipedia.org/wiki/Regular_expression">syntaxe d'expression régulière</a>.
+            Chaque élément de sous-liste comporte une ou plusieurs entrées.
+            Dans le cas de sous-listes de domaines, la demande de ressource n'est vérifiée par rapport à l'élément que si la première entrée correspond au domaine de l'URL principale.</p>
+
+        <p>En raison des limitations de WebView d'Android et pour accélérer le traitement des requêtes, Privacy Browser met en œuvre une interprétation simplifiée de la syntaxe Adblock.
+            Cela peut parfois conduire à des faux positifs, lorsque des ressources sont autorisées ou bloquées d'une manière qui n'était pas prévue par l'entrée d'origine.
+            Une description plus détaillée de la manière dont les entrées de la liste de filtres sont traitées est disponible à l'adresse suivante
+            <a href="https://www.stoutner.com/privacy-browser-android/filter-lists/">stoutner.com</a>.</p>
+
+        <p>Privacy Browser possède trois listes additionelles de filtres.
+            <a href="https://www.stoutner.com/privacy-browser-android/filter-lists/ultralist/">UltraList</a> et
+            <a href="https://www.stoutner.com/privacy-browser-android/filter-lists/ultraprivacy/">UltraPrivacy</a>
+            filtrent les publicités et les traqueurs, ce que ne font pas EasyList et EasyPrivacy. Le troisième bloque toutes les demandes émanant de tiers.
+            Une requête n'est considérée comme tierce que si le domaine de base de la requête est différent du domaine de base de l'URL.
+            Par exemple, si <code>www.siteweb.com</code> charge une image de <code>images.siteweb.com</code>,
+            cette demande n'est pas bloquée en tant que demande d'un tiers parce qu'ils partagent tous deux le même domaine de base de <code>siteweb.com</code>.
+            Le blocage de toutes les demandes émanant de tiers renforce la protection de la vie privée,
+            mais cette liste de filtres est désactivée par défaut parce qu'elle perturbe un grand nombre de sites web.</p>
+    </body>
+</html>

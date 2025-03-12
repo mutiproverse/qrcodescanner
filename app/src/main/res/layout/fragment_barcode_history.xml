@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        >
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            app:title="@string/fragment_barcode_history_title"
+            app:menu="@menu/menu_barcode_history"
+            style="@style/ToolbarStyle"
+            app:popupTheme="@style/PopupMenuStyle"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:tabTextAppearance="@style/TabTextAppearance"
+        app:tabTextColor="@color/tab_layout_text_color_inactive"
+        app:tabSelectedTextColor="@color/tab_layout_text_color_inactive"
+        app:tabIndicatorColor="@color/tab_layout_text_color_active"
+        app:tabIndicatorHeight="@dimen/tab_layout_indicator_height"
+        android:background="@color/tab_layout_background_color"
+        app:tabMode="fixed"
+        app:tabIndicator="@drawable/capsule_gray"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="center"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorGravity="stretch"
+        app:tabMinWidth="150dp"
+        />
+
+    <com.redlable.qrcodescanner.feature.common.view.CustomViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

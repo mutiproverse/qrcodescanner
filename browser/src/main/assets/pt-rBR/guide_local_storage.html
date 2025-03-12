@@ -1,0 +1,81 @@
+<!--
+  Copyright 2016-2018, 2020-2022, 2024 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2021 Thiago Nazareno Conceição Silva de Jesus <mochileiro2006-trilhas@yahoo.com.br>.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android/>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Storage</title>
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> Cookies primários</h3>
+
+        <p>Os cookies primários são definidos pelo site na barra de URL na parte superior da página.</p>
+
+        <p>Desde os primórdios da Internet, tornou-se óbvio que seria vantajoso para os sites a capacidade de armazenar informações em um computador para acesso futuro.
+            Por exemplo, um site que exibe informações meteorológicas pode solicitar ao usuário um CEP e armazená-lo em um cookie.
+            Na próxima vez que o usuário visitar o site, as informações meteorológicas serão carregadas automaticamente para aquele CEP, sem que o usuário tenha que digitá-lo novamente.</p>
+
+        <p>Como tudo na web, pessoas inteligentes descobriram todos os tipos de maneiras de abusar dos cookies para fazer coisas que os usuários não aprovariam se soubessem que estavam acontecendo.
+            Por exemplo, um site pode definir um cookie com um número de série exclusivo em um dispositivo.
+            Então, toda vez que um usuário visita o site nesse dispositivo, ele pode ser vinculado a um perfil exclusivo que o servidor mantém para aquele número de série,
+            mesmo se o dispositivo se conectar a partir de endereços IP diferentes.</p>
+
+        <p>Quase todos os sites com logins exigem que os cookies sejam ativados para o login do usuário.
+            É assim que eles se certificam de que ainda é você conforme você passa de uma página para outra no site, e é, na minha opinião, o único uso legítimo para cookies.</p>
+
+        <p>O System WebView do Android trata os cookies como uma configuração no nível do aplicativo, o que significa que os cookies estão ativados ou desativados em todas as guias do Privacy Browser.
+            O resultado é que a configuração de cookies para qualquer guia exibida no momento também controla a configuração de cookies para todas as guias em segundo plano.
+            Se você tiver uma guia nesse plano de fundo que tenha cookies ativados para que você possa fazer login em um site e alternar para uma guia que não tenha cookies ativados,
+            ela desativou os cookies para todas as guias.
+            Se a guia em segundo plano fizer uma solicitação, por exemplo, para ver se há informações atualizadas, essa solicitação será enviada sem cookies, oque fará com que o site desconecte você.
+            Esta é uma limitação que será removida com o lançamento do <a href="https://www.stoutner.com/category/privacy-browser-android-roadmap/">Privacy WebView</a> no 4.x série.</p>
+
+        <p>Se os cookies estiverem habilitados, mas o JavaScript estiver desabilitado, o ícone de privacidade ficará amarelo <img class="inline" src="../shared_images/warning.svg" alt="Warning"> como um aviso.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> Cookies de terceiros</h3>
+
+        <p>Os cookies de terceiros são definidos por partes de um site que são carregadas de servidores diferentes do URL na barra de endereços.
+            Não há um bom motivo para ativar cookies de terceiros. O Privacy Browser 3.8 removeu a opção e até o Google está planejando
+            <a href="https://www.theverge.com/2020/1/14/21064698/google-third-party-cookies-chrome-two-years-privacy-safari-firefox">desativá-la no futuro</a>.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/web.svg#icon"/></svg> Armazenamento DOM</h3>
+
+        <p>O armazenamento do Document Object Model, também conhecido como armazenamento na web, é como cookies com esteróides.
+            Considerando que o tamanho máximo de armazenamento combinado para todos os cookies de um único URL é de 4 kilobytes,
+            O armazenamento DOM pode conter <a href="https://en.wikipedia.org/wiki/Web_storage#Features">megabytes por site</a>.
+            Ao contrário dos cookies, o armazenamento DOM não envia todos os dados nos cabeçalhos com cada solicitação.
+            Em vez disso, ele usa JavaScript para ler e gravar dados, o que significa que não funciona quando o JavaScript está desabilitado.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/delete_forever.svg#icon"/></svg> Limpar e fechar</h3>
+
+        <p>Limpar e Fechar é executado sempre que a última guia é fechada ou Limpar e Fechar é selecionado no menu de navegação.
+            Por padrão, ele limpa os cookies, o armazenamento DOM, os dados do formulário, o logcat e o cache do WebView.
+            Em seguida, ele exclui manualmente todos os diretórios <code>app_webview</code> e <code>cache</code>. O comportamento de Limpar e Fechar pode ser configurado nas configurações.</p>
+    </body>
+</html>

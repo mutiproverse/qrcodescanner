@@ -1,0 +1,86 @@
+<!--
+  Copyright 2018-2020,2022-2023 Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/local_activity.svg#icon"/></svg> Запросы ресурсов</h3>
+
+        <p>При загрузке URL-адреса обычно происходит ряд запросов ресурсов для CCS, JavaScript, изображений и других файлов. Сведения об этих запросах можно просмотреть в активности запросов.
+            В навигационном меню имеется ссылка на активность запросов, а также показано, сколько запросов было заблокировано.
+            При нажатии на запрос отображаются сведения о том, почему он был разрешен или заблокирован.</p>
+
+        <img class="center" src="images/request_details.png"/>
+
+        <p>Privacy Browser включает четыре <a href="https://easylist.to/">основных списка фильтрации</a> основанных на <a href="https://adblockplus.org/filters">синтаксисе Adblock</a>:
+            EasyList, EasyPrivacy, Fanboy’s Annoyance и Fanboy’s Social.
+            Эти списки фильтрации преобразуются Privacy Browser в следующие 22 подсписка, которые проверяют запросы ресурсов в перечисленном порядке.</p>
+
+        <ol>
+            <li>Основной список разрешенных</li>
+            <li>Окончательный список разрешенных</li>
+            <li>Список разрешенных доменов</li>
+            <li>Начальный список разрешенных доменов</li>
+            <li>Окончательный список разрешенных доменов</li>
+            <li>Сторонний список разрешенных</li>
+            <li>Сторонний список разрешенных доменов</li>
+            <li>Начальный список разрешенных сторонних доменов</li>
+            <li>Основной список блокировки</li>
+            <li>Начальный список блокировки</li>
+            <li>Окончательный список блокировки</li>
+            <li>Список блокировки доменов</li>
+            <li>Начальный список блокировки доменов</li>
+            <li>Окончательный список блокировки доменов</li>
+            <li>Список блокировки доменов по регулярным выражениям</li>
+            <li>Сторонний список блокировки</li>
+            <li>Сторонний начальный список блокировки</li>
+            <li>Сторонний список блокировки доменов</li>
+            <li>Сторонний начальный список блокировки доменов</li>
+            <li>Сторонний список блокировки по регулярным выражениям</li>
+            <li>Сторонний список блокировки доменов по регулярным выражениям</li>
+            <li>Список блокировки регулярными выражениями</li>
+        </ol>
+
+        <p>Исходные списки проверяются на начало URL-адреса. Окончательные списки проверяются на конец URL-адреса. Списки доменов проверяют только определенные домены.
+            Сторонние списки применяются только в том случае, если корневой домен запроса отличается от корневого домена основного URL-адреса.
+            Списки регулярных выражений следуют за <a href="https://ru.wikipedia.org/wiki/Регулярные_выражения">синтаксисом регулярных выражений</a>.
+            Каждый элемент подсписка имеет одну или несколько записей.
+            В случае подсписков домена, запрос ресурса проверяется только в отношении элемента, если первая запись соответствует домену основного URL-адреса.</p>
+
+        <p>Из-за ограничений WebView в Android и для ускорения обработки запросов, Privacy Browser реализует упрощенную интерпретацию синтаксиса Adblock.
+            Иногда это может привести к ложным срабатываниям, когда ресурсы разрешаются или блокируются не так, как предполагалось в исходной записи.
+            Более подробное описание того, как обрабатываются записи списка фильтрации, можно найти на <a href="https://www.stoutner.com/privacy-browser-android/filter-lists/">stoutner.com</a>.</p>
+
+        <p>Privacy Browser имеет три дополнительных списка фильтрации.
+            <a href="https://www.stoutner.com/privacy-browser-android/filter-lists/ultralist/">UltraList</a> и
+            <a href="https://www.stoutner.com/privacy-browser-android/filter-lists/ultraprivacy/">UltraPrivacy</a>
+            они фильтруют рекламу и трекеры, которые не фильтруют EasyList и EasyPrivacy. Третий блокирует все сторонние запросы.
+            Запрос считается сторонним, только если базовый домен запроса отличается от URL базового домена.
+            Например, если <code>www.website.com</code> загружает изображение с сайта <code>images.website.com</code>,
+            он не будет заблокирован как сторонний запрос, поскольку оба они используют один и тот же базовый домен <code>website.com</code>.
+            Блокировка всех сторонних запросов повышает конфиденциальность, но этот список фильтров отключен по умолчанию, поскольку он нарушает работу большого количества сайтов.</p>
+    </body>
+</html>

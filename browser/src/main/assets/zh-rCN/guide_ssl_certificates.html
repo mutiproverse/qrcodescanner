@@ -1,0 +1,47 @@
+<!--
+  Copyright 2017-2020,2022-2023 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2023 Xin.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/vpn_lock.svg#icon"/></svg> 信任的连接</h3>
+
+        <p>当访问一个加密的URL(由https开始)，网页使用SSL证书来加密发送到浏览器的信息和确认服务。确认服务是为了保护位于浏览器和网页提供商的的服务和翻译信息。这种攻击方式被称为MITM。
+            SSL证书由证书机构颁发，公司通过验证服务的身份并产生一个收费的证书。安卓有一个受信任的证书列表，会接收所有网页的证书。一个域只允许一个特定的证书，其他的证书无效。但实际使用中政府和大型公司能做到这一点。</p>
+
+        <p>固定的证书告诉浏览器一个域名只有一个SSL证书值得信任。其他的证书及时是合法的也会被拒绝。</p>
+
+        <img class="center" src="images/pinned_mismatch.png"/>
+
+        <p>SSL证书会在一个指定的日期到期，所以即使是一个固定的SSL证书也需要合法的更新。通常，在大部分使用中不需要固定的证书，但对于那些认为会被攻击的大公司来说，固定的证书可以阻止MITM攻击。隐私浏览器也提供固定IP的功能。</p>
+
+        <img class="center" src="images/pinned_ssl_certificate.png"/>
+
+        <p>SSL证书可以在域名设置中固定。除了防御MITM攻击，为无线路由器或接入点等设备固定自己签名的证书通常可以消除在每次加载其网站时出现的错误消息。点击活动选项卡会显示当前网站的 SSL 证书。</p>
+    </body>
+</html>

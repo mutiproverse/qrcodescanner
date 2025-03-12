@@ -1,0 +1,59 @@
+<!--
+  Copyright 2016-2022 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2019,2021-2022 Bernhard G. Keller.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2016 Aaron Gerlach <aaron@gerlach.com>.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/location_off.svg#icon"/></svg> Do-Not-Track</h3>
+
+        <p>Vor einigen Jahren wurde vom W3C (World Wide Web Consortium) ein Mechanismus für Internet-Browser entwickelt, der Webserver davon in Kenntnis setzen sollte,
+            dass deren Benutzer nicht getrackt werden wollen.
+            Dies wird über den <a href="https://de.wikipedia.org/wiki/Do_Not_Track_(Software)">DNT-Header (Do-Not-Track-Header)</a> innerhalb von Ressourcen-Anfragen bewerkstelligt.</p>
+
+        <p>Der DNT-Header bewirkt jedoch de facto so gut wie keine Privatsphäre, da er von den meisten Webservern schlicht ignoriert wird.
+            So ignorieren zum Beispiel mit Yahoo, Google, Microsoft und Facebook so gut wie alle grossen Internet-Anbieter zumindest einige DNT-Header.
+            Ab Version 3.8 ist die Option zum Senden des DNT-Headers im Privacy Browser nicht mehr verfügbar.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/link_off.svg#icon"/></svg> URL-Bereinigung</h3>
+
+        <p>Um ihre Privatsphäre zu schützen entfernt Privacy Browser Tracking-IDs und AMP- (<a href="https://en.wikipedia.org/wiki/Accelerated_Mobile_Pages">Accelerated Mobile Pages</a>)
+            Redirects aus URL-Anfragen (Queries).
+            Eine Liste der aktuellen URL-Modifikationen kann einem <a href="https://www.stoutner.com/url-modification/">Blog-Post</a> entnommen werden.
+            Die URL-Modifikationen können in den Einstellungen deaktiviert werden, sollten sie Probleme bereiten.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/disabled_by_default.svg#icon"/></svg> X-Requested-With-Header</h3>
+
+        <p>Die Android-Systemkomponente WebView sendet mit jeder Anfrage einen <a href="https://www.stoutner.com/the-x-requested-with-header/">X-Requested-With-Header</a> an den betreffenden Internet-Server.
+            Der Wert im X-Requested-With-Header entspricht dabei der Applikations-ID - im Fall von Privacy Browser <code>com.redlable.privacybrowser.standard</code>.
+            Dieses Verhalten kann mit den <a href="https://www.stoutner.com/webview-devtools/">WebView's DevTools</a> deaktiviert werden.</p>
+    </body>
+</html>

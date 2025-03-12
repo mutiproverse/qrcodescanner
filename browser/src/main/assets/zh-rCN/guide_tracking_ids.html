@@ -1,0 +1,51 @@
+<!--
+  Copyright 2016-2023 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2023 Xin.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/location_off.svg#icon"/></svg> 不要追踪</h3>
+
+        <p>多年前，万维网创造了一种不希望追踪的方式，通常通过在网页请求中包含<a href="https://en.wikipedia.org/wiki/Do_Not_Track">DNT (Do Not Track) header</a>来实现。</p>
+
+        <p>这个DNT头不提供真正的保护隐私，因为大部分网站会忽略它。例如，Yahoo,Google,Microsoft和Facebook全都忽略了DNT请求，从3.8开始隐私浏览器不再提供发送DNT请求的选项。</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/link_off.svg#icon"/></svg> URL 修改</h3>
+
+        <p>隐私浏览器从URL查询中删除IDs and AMP (<a href="https://en.wikipedia.org/wiki/Accelerated_Mobile_Pages">Accelerated Mobile Pages</a>)。
+            有一篇博客更新了<a href="https://www.stoutner.com/url-modification/">当前列表</a>的修改。URL修改出现错误可以在设置中关闭。</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/disabled_by_default.svg#icon"/></svg> X-Requested-With 请求头</h3>
+
+        <p>Google对Android’s WebView进行编程，通过所有请求产生<a href="https://www.stoutner.com/the-x-requested-with-header/">X-Requested-With header</a>。
+            X-Requested-With请求头的值被设置为应用程序的ID，在隐私浏览器的情况下为<code>com.redlable.privacybrowser.standard</code>。
+            这可以在<a href="https://www.stoutner.com/webview-devtools/">WebView's 开发者工具</a>.</p>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!--
+  Copyright 2016-2018, 2020-2024 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2023 Xin.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android/>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Storage</title>
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> 第一方Cookies</h3>
+
+        <p>第一方cookies在页面顶部的链接栏设置。</p>
+
+        <p>在早期的互联网中，网页能够储存在电脑上储存信息是很明显有利于下次访问的。例如，一个网页显示天气情况时询问用户邮政编码，然后储存在cookie里。用户下一次访问这个网页，会自动加载这个邮编所在地区的的天气情况，不需要用户再输一遍。</p>
+
+        <p>像网页上的其他东西，聪明的人想尽各种方法来滥用cookies去做如果用户直到不会赞成的事。例如，网页给设备设定一个独特的序列号，然后这个设备访问这个王者，就会被连接到这个序列号预先准备好的服务中，尽管该设备从不同的IP地址访问也一样。</p>
+
+        <p>大部分需要登录的网页要求cookies。他们通过这个方法来确定不同网页登录的你还是你，在我看来，这个使用cookies是合规的</p>
+
+        <p>安卓系统的Webview程序把cookies当成应用级的设置，意味着隐私浏览器的cookies可以在所有页面打开或关闭。这会导致当前页面设置的cookies会在所有页面生效。
+            如果你在后台有一个页面需要cookies来登录，而你在一个页面里关闭了cookies，所有页面的cookies都会被关闭。如果在后台的页面发出请求，例如，看有没有新消息，而在没有cookies的情况下需要你重新登录。
+            这个限制会在<a href="https://www.stoutner.com/category/privacy-browser-android-roadmap/">隐私浏览器</a> 4.x系列中移除。</p>
+
+        <p>如果cookies允许，而JavaScript不允许，隐私盾牌会变成黄色<img class="inline" src="../shared_images/warning.svg" alt="Warning">来示警</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> 第三方Cookies</h3>
+
+        <p>第三方cookies来自于网页的一部分，不同于顶部的在服务器加载的URL，这没有很好的理由来允许第三方cookies，隐私浏览器会在3.8版本移出这个选项，
+            甚至于谷歌计划<a href="https://www.theverge.com/2020/1/14/21064698/google-third-party-cookies-chrome-two-years-privacy-safari-firefox">在将来禁用他们</a>.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/web.svg#icon"/></svg> DOM 储存</h3>
+
+        <p>文本对向储存。也叫网页存储。像cookies一样被储存，单个URL的所有的cookies的最大的组合是4KB，而DOM能储存<a href="https://en.wikipedia.org/wiki/Web_storage#Features">MB</a>。
+            不像cookies，DOM储存不在请求头中发送数据，相反，它使用JavaScript来读写数据，意味着在禁用JavaScript时DOM不能工作。</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/delete_forever.svg#icon"/></svg> 清除并退出</h3>
+
+        <p>清除并退出会在最后一个页面退出或在导航栏选中时运行，默认清除cookies，DOM储存，表单数据，日志和WebView缓存。然后需要手动删除app_webview和cache目录。可以在设置中配置清除并退出的行为。</p>
+    </body>
+</html>

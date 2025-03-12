@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margin_big"
+        android:layout_marginTop="@dimen/default_margin_small"
+        android:text="@string/fragment_create_qr_code_cryptocurrency_type_hint"
+        android:textColor="@color/edit_text_hint_color"
+        android:textSize="@dimen/default_text_size_extra_small" />
+
+    <Spinner
+        android:id="@+id/spinner_cryptocurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margin_medium"
+        android:layout_marginTop="@dimen/default_margin_small" />
+
+
+    <EditText
+        android:id="@+id/edit_text_address"
+        style="@style/EditTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|top"
+        android:hint="@string/fragment_create_qr_code_cryptocurrency_address_hint"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLines="1"
+        android:padding="@dimen/default_text_size_very_small" />
+
+    <EditText
+        android:id="@+id/edit_text_amount"
+        style="@style/EditTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="01234567890."
+        android:gravity="start|top"
+        android:hint="@string/fragment_create_qr_code_cryptocurrency_amount_hint"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:lines="1"
+        android:maxLines="1"
+        android:padding="@dimen/default_text_size_very_small" />
+
+    <EditText
+        android:id="@+id/edit_text_label"
+        style="@style/EditTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|top"
+        android:hint="@string/fragment_create_qr_code_cryptocurrency_label_hint"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLines="1"
+        android:padding="@dimen/default_text_size_very_small" />
+
+    <EditText
+        android:id="@+id/edit_text_message"
+        style="@style/EditTextAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|top"
+        android:hint="@string/fragment_create_qr_code_cryptocurrency_message_hint"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLines="1"
+        android:padding="@dimen/default_text_size_very_small" />
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<!--
+  Copyright 2016-2022 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2019,2021-2022 Kévin L. <kevinliste@framalistes.org>.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/location_off.svg#icon"/></svg> Ne pas me suivre</h3>
+
+        <p>Il y a quelques années, le W3C (Consortium World Wide Web) a créé un mécanisme permettant aux navigateurs d'informer les serveurs Web qu'ils ne voudraient pas être suivis.
+             Ceci est réalisé en incluant un <a href="https://en.wikipedia.org/wiki/Do_Not_Track"> en-tête DNT (Ne pas suivre)</a> avec les requêtes Web.</p>
+
+        <p>L'en-tête DNT ne fournit pas vraiment de confidentialité car la plupart des serveurs Web l'ignorent. Par exemple, Yahoo, Google, Microsoft et Facebook ignorent tous au moins certains en-têtes DNT.
+            À partir de la version 3.8, Privacy Browser n'a plus l'option d'envoyer un en-tête DNT.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/link_off.svg#icon"/></svg> Modification d'URLs</h3>
+
+        <p>Privacy Browser supprime les ID de suivi et les redirections AMP (<a href="https://en.wikipedia.org/wiki/Accelerated_Mobile_Pages">Accelerated Mobile Pages</a>) des requêtes URL.
+            Il existe un article de blog qui est mis à jour avec la <a href="https://www.stoutner.com/url-modification/">liste actuelle</a> des modifications.
+            La modification des URL peut être désactivée dans les paramètres si elle pose des problèmes.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/disabled_by_default.svg#icon"/></svg> En-tête X-Requested-With</h3>
+
+        <p>Google a programmé WebView d'Android pour envoyer un <a href="https://www.stoutner.com/the-x-requested-with-header/">en-tête X-Requested-With</a> avec chaque requête.
+            La valeur de l'en-tête X-Requested-With est définie par l'ID de l'application, qui dans le cas de Privacy Browser est <code>com.redlable.privacybrowser.standard</code>.
+            Ceci peut être désactivé en utilisant <a href="https://www.stoutner.com/webview-devtools/">les outils de développement de WebView</a>.</p>
+    </body>
+</html>

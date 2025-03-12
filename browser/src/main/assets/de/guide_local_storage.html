@@ -1,0 +1,86 @@
+<!--
+  Copyright 2016-2018, 2020-2022, 2024 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2019, 2021-2022 Bernhard G. Keller.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2016 Aaron Gerlach <aaron@gerlach.com>.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android/>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Storage</title>
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> Erstanbieter-Cookies</h3>
+
+        <p>Cookies können in zwei Typen unterteilt werden: Erstanbieter-Cookies sind dabei Cookies, die von der aktuell besuchten Website gesetzt werden.</p>
+
+        <p>Mit solchen Erstanbieter-Cookies können Websites z.B. Informationen auf einem Computer speichern, um diese bei späteren Aufrufen derselben Seite wieder zu verwenden.
+            Zum Beispiel kann eine Internet-Seite, die das Wetter anzeigt, den Benutzer nach seiner Postleitzahl fragen und diese in einem Cookie speichern.
+            Beim nächsten Besuch der Website wird dem Benutzer dann automatisch das Wetter für diese Postleitzahl/Region angezeigt, ohne dass der Benutzer diese erneut eingeben muss.</p>
+
+        <p>Wie viele andere Dinge im Internet werden solche Cookies jedoch mittlerweile auch für Zwecke missbraucht, die Website-Besucher normalerweise nicht gestatten würden, wenn sie davon wüssten.
+            Zum Beispiel können Websites eindeutige Kennzeichen oder Seriennummern in Cookies speichern.
+            Jedes Mal wenn der Benutzer dann mit seinem Gerät diese Website aufruft, können dessen Bewegungen mit dem Profil dieser Seriennummer verknüpft werden,
+            auch wenn dem Gerät inzwischen eine andere IP-Adresse zugewiesen wurde. So entstehen umfangreiche Profile über die Vorlieben von Website-Besuchern.</p>
+
+        <p>Für nahezu alle Internet-Seiten, bei denen man sich anmelden muss, müssen Cookies aktiviert sein.
+            Durch die Nutzung von Cookies stellen diese Internet-Seiten sicher, daß es sich um denselben angemeldeten Benutzer handelt, der von Seite zu Seite innerhalb einer Website navigiert.
+            Dies ist vermutlich die einzige legitime Nutzung von Cookies.</p>
+
+        <p>Die Android-System-Komponente WebView behandelt Cookies auf App-Ebene, d.h. Cookies können grundsätzlich nur für alle Privacy-Browser-Tabs ein- oder ausgeschaltet werden.
+            Daher gelten die Einstellungen des aktuell angezeigten Tabs auch für alle im Hintergrund geöffneten Tabs.
+            Wurden Cookies für einen Hintergrund-Tab aktiviert, um an einer Website angemeldet zu bleiben, und sie wechseln zu einem Tab, für den Cookies deaktivert wurden,
+            werden Cookies auch für alle anderen Tabs deaktiviert.
+            Stellt der Hintergrund-Tab in dieser Situation eine Anfrage an den Server, um z.B. Daten zu aktualisieren, wird diese Anfrage ohne Cookies gesendet,
+            wodurch sie ggf. von der Website abgemeldet werden.
+            Diese Einschränkung wird mit <a href="https://www.stoutner.com/category/privacy-browser-android-roadmap/">Privacy WebView</a> in den Versionen 4.x von Privacy Browser behoben werden.</p>
+
+        <p>Wenn Cookies aktiviert sind, aber JavaScript deaktiviert ist, wird das Privatsphären-Icon <img class="inline" src="../shared_images/warning.svg" alt="Warning"> zur Warnung in gelb dargestellt.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> Drittanbieter-Cookies</h3>
+
+        <p>Drittanbieter-Cookies werden von Teilen von Websites gesetzt, die von anderen Servern geladen werden als von dem, dessen Adresse (URL) in der Adresszeile des Browsers angezeigt wird.
+            Es gibt eigentlich keinen guten Grund, solche Cookies überhaupt zuzulassen. Ab Privacy Browser Version 3.8 wurde die Option daher entfernt und selbst Google plant,
+            <a href="https://www.theverge.com/2020/1/14/21064698/google-third-party-cookies-chrome-two-years-privacy-safari-firefox">Drittanbieter-Cookies in Zukunft zu deaktivieren</a>.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/web.svg#icon"/></svg> DOM-Speicher</h3>
+
+        <p>Der Document-Object-Model-Speicher - auch als Web-Speicher bekannt - funktioniert wie "gedopte" Cookies.
+            Während alle Cookies einer einzelnen Internet-Adresse (URL) gemeinsam nur 4 Kilobytes an Daten speichern können,
+            können im DOM-Speicher <a href="https://en.wikipedia.org/wiki/Web_storage#Features">mehrere Megabytes pro Internet-Seite</a> gespeichert werden.
+            Die gespeicherten Daten werden dabei - im Gegensatz zu Cookies - nicht bei jeder Anfrage zur Gänze im Header mitgeschickt,
+            sondern mittels JavaScript gelesen und geschrieben, sodass diese Form der Datenspeicherung nicht funktioniert, wenn JavaScript deaktiviert ist.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/delete_forever.svg#icon"/></svg> Bereinigen und Schließen</h3>
+
+        <p>Bereinigen und Schließen wird immer durchgeführt, wenn der letzte Tab geschlossen oder der entsprechende Menüpunkt im Navigations-Menü ausgewählt wird.
+            Standardmäßig werden dabei Cookies, der DOM-Speicher, Formulardaten, logcat-Logs und der WebView-Cache bereinigt bzw. gelöscht,
+            danach werden alle <code>App-WebView-</code> und <code>Cache-</code> Verzeichnisse gelöscht.
+            Das Verhalten von "Bereinigen und Schließen" kann in den Einstellungen konfiguriert werden.</p>
+    </body>
+</html>

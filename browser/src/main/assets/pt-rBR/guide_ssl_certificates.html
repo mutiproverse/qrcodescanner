@@ -1,0 +1,58 @@
+<!--
+  Copyright © 2017-2022 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2021 Thiago Nazareno Conceição Silva de Jesus <mochileiro2006-trilhas@yahoo.com.br>.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/vpn_lock.svg#icon"/></svg> Conecte-se com Confiança</h3>
+
+        <p>Ao visitar um URL criptografado (que começa com HTTPS), o servidor da web usa um certificado SSL para criptografar as informações enviadas para o navegador e para identificar o servidor.
+            O objetivo da identificação do servidor é evitar que uma máquina localizada entre o navegador e o servidor da web finja ser o servidor e descriptografe as informações em trânsito.
+            Esse tipo de ataque é conhecido como ataque Man In The Middle (MITM).
+            Os certificados SSL são gerados por autoridades de certificação: empresas que verificam a identidade de um servidor e produzem um certificado por uma taxa.
+            O Android tem uma lista de autoridades de certificação confiáveis e aceitará qualquer um de seus certificados para qualquer site.
+            Não deveria ser possível para uma organização adquirir um certificado SSL para um domínio que ela não controla,
+            mas, na prática, muitos governos e grandes corporações têm sido capazes de fazê-lo.</p>
+
+        <p>Fixar um certificado SSL informa ao navegador que apenas um certificado SSL específico é confiável para um determinado domínio. Qualquer outro certificado, mesmo que seja válido, será rejeitado.</p>
+
+        <img class="center216" src="images/pinned_mismatch.png"/>
+
+        <p>Os certificados SSL expiram em uma data especificada, portanto, mesmo os certificados SSL fixados precisarão ser atualizados de vez em quando.
+            Como regra geral, fixar certificados SSL provavelmente não é necessário na maioria dos casos.
+            Mas, para aqueles que suspeitam que organizações poderosas podem estar almejando-os, a fixação de certificado SSL pode detectar e impedir um ataque MITM.
+            O Privacy Browser também tem a capacidade de fixar endereços IP.</p>
+
+        <img class="center216" src="images/pinned_ssl_certificate.png"/>
+
+        <p>Os certificados SSL podem ser fixados nas configurações do domínio.
+            Além de proteger contra ataques MITM,
+            fixar um certificado autoassinado para um dispositivo como um roteador sem fio ou ponto de acesso removerá a mensagem de erro que normalmente é apresentada sempre que o site é carregado.
+            Tocar na guia ativa exibe o certificado SSL do site atual.</p>
+    </body>
+</html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scanner_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:autoFocusButtonVisible="false"
+        app:flashButtonVisible="false"
+        app:frameAspectRatioHeight="1"
+        app:frameAspectRatioWidth="1"
+        app:frameColor="@color/white"
+        app:frameSize="0.6"
+        app:frameThickness="2.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maskColor="@color/black_transparent3" />
+
+    <View
+        android:id="@+id/bgView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/capsule_gray"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_scan_from_file"
+        app:layout_constraintEnd_toEndOf="@id/button_increase_zoom"
+        app:layout_constraintStart_toStartOf="@id/button_decrease_zoom"
+        app:layout_constraintTop_toTopOf="@id/image_view_flash" />
+
+    <ImageView
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:id="@+id/image_view_flash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toTopOf="@id/seek_bar_zoom"
+        app:layout_constraintEnd_toStartOf="@id/image_view_scan_from_file"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_flash" />
+
+    <TextView
+        android:id="@+id/text_view_flash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_scan_barcode_from_camera_flash"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text_size_extra_small"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/image_view_flash"
+        app:layout_constraintStart_toStartOf="@id/image_view_flash"
+        app:layout_constraintTop_toBottomOf="@id/image_view_flash" />
+
+    <FrameLayout
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:id="@+id/layout_flash_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_flash"
+        app:layout_constraintEnd_toEndOf="@id/text_view_flash"
+        app:layout_constraintStart_toStartOf="@id/text_view_flash"
+        app:layout_constraintTop_toTopOf="@id/image_view_flash" />
+
+    <ImageView
+        android:id="@+id/image_view_scan_from_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_view_flash"
+        app:layout_constraintTop_toTopOf="@id/image_view_flash"
+        app:srcCompat="@drawable/ic_image_white" />
+
+    <TextView
+        android:id="@+id/text_view_scan_from_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/fragment_scan_barcode_from_camera_scan_from_file"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text_size_extra_small"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/image_view_scan_from_file"
+        app:layout_constraintStart_toStartOf="@id/image_view_scan_from_file"
+        app:layout_constraintTop_toBottomOf="@id/image_view_scan_from_file" />
+
+    <FrameLayout
+        android:background="?attr/selectableItemBackgroundBorderless"
+
+        android:id="@+id/layout_scan_from_file_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/text_view_scan_from_file"
+        app:layout_constraintEnd_toEndOf="@id/text_view_scan_from_file"
+        app:layout_constraintStart_toStartOf="@id/text_view_scan_from_file"
+        app:layout_constraintTop_toTopOf="@id/image_view_scan_from_file" />
+
+    <ImageView
+        android:id="@+id/button_decrease_zoom"
+        android:layout_width="@dimen/button_zoom_size"
+        android:layout_height="@dimen/button_zoom_size"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="@dimen/default_margin_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_minus" />
+
+    <SeekBar
+        android:id="@+id/seek_bar_zoom"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/zoom_seek_bar_height"
+        android:layout_marginHorizontal="@dimen/default_margin_small"
+        android:theme="@style/SeekBarTheme"
+        app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"
+        app:layout_constraintEnd_toStartOf="@id/button_increase_zoom"
+        app:layout_constraintStart_toEndOf="@id/button_decrease_zoom"
+        app:layout_constraintTop_toTopOf="@id/button_decrease_zoom" />
+
+    <ImageView
+        android:id="@+id/button_increase_zoom"
+        android:layout_width="@dimen/button_zoom_size"
+        android:layout_height="@dimen/button_zoom_size"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/button_decrease_zoom"
+        app:srcCompat="@drawable/ic_plus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

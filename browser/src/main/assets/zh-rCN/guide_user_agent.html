@@ -1,0 +1,52 @@
+<!--
+  Copyright 2016-2020,2022-2023 Soren Stoutner <soren@stoutner.com>.
+
+  Translation 2023 Xin.  Copyright assigned to Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/devices_other.svg#icon"/></svg> 浏览器识别</h3>
+
+        <p>当 Web 浏览器连接到网站时，它们会发送一个UA，用于标识浏览器及其拥有的呈现功能。Web 服务器可以使用此信息来决定将哪个版本的网站发送给浏览器。例如，许多网站都有不同的桌面和移动浏览版本。</p>
+
+        <p>隐私浏览器默认使用自己的用户代理<code>PrivacyBrowser/1.0</code>。这发送最小的信息给网页提供商。因为网页提供商不能识别移动用户代理，他们会显示桌面浏览版本。</p>
+
+        <p>相比之下，WebView默认的UA暴露了设备的硬件和软件的大量信息。可以在<strong>设置</strong>，选择<strong>WebView默认设置</strong>作为<strong>UA</strong>显示将要被发送的UA。
+            下面的截图会显示Pixel 5在安卓13上下载的WebView110.0.5481.40。许多的网页提供商会当成移动浏览器来分析，并在他们有移动浏览页面时展示它。</p>
+
+        <img class="center" src="images/user_agent.png">
+
+        <p>仅有很少一部分用户访问网页的UA相同。如果UA结合其他不特定的信息，通常能得到一个特定的指纹。EFF创立了一个叫<a href="https://coveryourtracks.eff.org/">Cover Your Tracks</a>的工具来展示可以从这些资源收集到多少信息。
+            <a href="https://www.browserleaks.com">Browser Leaks</a>和<a href="https://amiunique.org/">Am I Unique</a>也是一个很好的信息来源。</p>
+
+        <p>有几个预设的UA可以匹配常见的浏览器和开源系统，出于浏览器指纹识别的目的，任何罕见的都更容易追踪。如果很多人使用隐私浏览器，并且使用<code>PrivacyBrowser/1.0</code>作为他们的UA，是对保护隐私的一个好选择。
+            Firefox or Chrome是最常见的UA，但是他们会自动升级并且他们的版本更新的如此快，以致会和隐私浏览器的UA的日志产生冲突。</p>
+
+        <p>有的网页如果没识别到UA<a href="https://www.stoutner.com/user-agent-problems/">就不能正确打开</a>。使用域名设置UA<strong>WebView 默认设置</strong>，或其他常见的UA，通常能解决这个问题。
+            Android’s WebView 不允许UA为空，如果为空的话会发送默认的UA给服务器。</p>
+    </body>
+</html>

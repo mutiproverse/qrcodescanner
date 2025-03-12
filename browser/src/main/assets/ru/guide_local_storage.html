@@ -1,0 +1,79 @@
+<!--
+  Copyright 2016-2018, 2020-2022, 2024 Soren Stoutner <soren@stoutner.com>.
+
+  This file is part of Privacy Browser Android <https://www.stoutner.com/privacy-browser-android/>.
+
+  Privacy Browser Android is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Privacy Browser Android is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Privacy Browser Android.  If not, see <http://www.gnu.org/licenses/>. -->
+
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Local Storage</title>
+
+        <link rel="stylesheet" href="../css/theme.css">
+
+        <!-- Setting the color scheme instructs the WebView to respect `prefers-color-scheme` @media CSS. -->
+        <meta name="color-scheme" content="light dark">
+    </head>
+
+    <body>
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> Первичные файлы cookie</h3>
+
+        <p>Первичные файлы cookie устанавливаются веб-сайтом, указанным в адресной строке.</p>
+
+        <p>Еще на заре эпохи интернета стало очевидным, что веб-сайтам было бы выгодно иметь возможность хранить информацию на компьютере для последующего доступа к ней.
+            Например, веб-сайт, предоставляющий информацию о погоде, может запросить у пользователя название города, а затем сохранить его в файле cookie.
+            При следующем посещении веб-сайта информация о погоде будет автоматически загружена для этого города, без необходимости вводить его снова.</p>
+
+        <p>Как и со всем остальным в интернете, умные люди нашли всевозможные способы злоупотребления cookie, в том числе делать то, что пользователи не одобрят, если узнают что именно происходит.
+            Например, веб-сайт может установить файл cookie на устройстве с уникальным номером.
+            Затем при каждом посещении веб-сайта с этого устройства, он может быть связан с уникальным профилем, который сервер хранит для этого номера,
+            даже если устройство подключается с разных IP-адресов.</p>
+
+        <p>Почти все сайты с логинами требуют, чтобы для авторизации пользователя были включены cookie.
+            Именно так они удостоверяются, что это все еще вы, когда переходите со страницы на страницу на сайте, и, на мой взгляд, это единственное законное использование файлов cookie.</p>
+
+        <p>Android System WebView рассматривает cookie как настройку на уровне приложения, что означает, что cookie либо включены, либо выключены для всех вкладок в Privacy Browser.
+            В результате настройка cookie для той вкладки, которая отображается в данный момент, управляет настройками cookies для всех фоновых вкладок.
+            Если у вас есть фоновая вкладка, на которой включены cookie, чтобы вы могли войти на сайт, и вы переключаетесь на вкладку, на которой cookie не включены,
+            это приведет к отключению cookies для всех вкладок.
+            Если фоновая вкладка делает запрос, например, чтобы узнать, есть ли обновленная информация, этот запрос будет отправлен без файлов cookie, что приведет к разлогиниванию.
+            Это ограничение будет устранено с выходом <a href="https://www.stoutner.com/category/privacy-browser-android-roadmap/">Privacy WebView</a> в версии 4.x.</p>
+
+        <p>Если cookie включены и при этом JavaScript отключен, то значок конфиденциальности будет желтого цвета <img class="inline" src="../shared_images/warning.svg" alt="Warning"> в качестве предупреждения.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/cookie.svg#icon"/></svg> Сторонние файлы cookie</h3>
+
+        <p>Сторонние файлы cookie устанавливаются фрагментами сайта, которые загружаются с серверов, отличных от указанного в адресной строке.
+            Не существует никаких веских причин для включения сторонних файлов cookie. В Privacy Browser 3.8 эта опция была удалена, и даже Google
+            <a href="https://www.theverge.com/2020/1/14/21064698/google-third-party-cookies-chrome-two-years-privacy-safari-firefox">планирует отключить ее в будущем</a>.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/web.svg#icon"/></svg> DOM-хранилище</h3>
+
+        <p>Хранилище Document Object Model (объектной модели документа), также известное как интернет-хранилище, напоминает файлы cookie на стероидах.
+            Если максимальный совокупный размер для хранения всех файлов cookie с одного URL составляет 4 килобайта,
+            то DOM-хранилище может вмещать <a href="https://en.wikipedia.org/wiki/Web_storage#Features">мегабайты на сайт</a>.
+            В отличие от cookie, DOM-хранилище не передает все данные в заголовках с каждым запросом.
+            Вместо этого оно использует JavaScript для чтения и записи данных, а это означает, что оно не работает, когда JavaScript отключен.</p>
+
+
+        <h3><svg class="header"><use href="../shared_images/delete_forever.svg#icon"/></svg> Очистить и выйти</h3>
+
+        <p>Функция Очистить и выйти запускается каждый раз при закрытии последней вкладки или выборе Очистить и выйти из меню навигации.
+            По умолчанию очищаются cookie, DOM-хранилище, данные формы, logcat и кэш WebView. Затем происходит ручное удаление всех каталогов <code>app_webview</code> и <code>cache</code>.
+            Поведение опции Очистить и выйти можно настроить в настройках.</p>
+    </body>
+</html>

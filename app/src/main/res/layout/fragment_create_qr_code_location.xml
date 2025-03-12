@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingTop="@dimen/default_margin_small"
+    android:paddingBottom="@dimen/default_margin">
+
+
+        <EditText
+            android:id="@+id/edit_text_latitude"
+            style="@style/EditTextAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="-.01234567890"
+            android:gravity="start|top"
+            android:hint="@string/fragment_create_qr_code_location_latitude_hint"
+            android:imeOptions="actionNext"
+            android:inputType="numberSigned"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="@dimen/default_text_size_very_small" />
+
+
+
+        <EditText
+            android:id="@+id/edit_text_longitude"
+            style="@style/EditTextAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="-.01234567890"
+            android:gravity="start|top"
+            android:hint="@string/fragment_create_qr_code_location_longitude_hint"
+            android:imeOptions="actionNext"
+            android:inputType="numberSigned"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="@dimen/default_text_size_very_small" />
+
+
+
+        <EditText
+            android:id="@+id/edit_text_altitude"
+            style="@style/EditTextAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="-.01234567890"
+            android:gravity="start|top"
+            android:hint="@string/fragment_create_qr_code_location_altitude_hint"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:lines="1"
+            android:maxLines="1"
+            android:padding="@dimen/default_text_size_very_small" />
+</LinearLayout>

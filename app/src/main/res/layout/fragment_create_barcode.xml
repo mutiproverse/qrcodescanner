@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        style="@style/AppBarLayoutStyle"
+        >
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            app:title="@string/fragment_create_barcode_title"
+            style="@style/ToolbarStyle"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+        android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/qrCodeButton"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="@string/fragment_create_barcode_qr_code"
+            android:backgroundTint="@color/purple"
+            android:background="@drawable/capsule_gray"
+            android:paddingVertical="16dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            style="@style/CreateBarcodeGroupTitleTextViewStyle"
+            android:clickable="true"
+            android:focusable="true"
+            />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/barCodeButton"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:background="@drawable/capsule_gray"
+            android:paddingHorizontal="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/barcode"
+            style="@style/CreateBarcodeGroupTitleTextViewStyle"
+            android:clickable="true"
+            android:focusable="true"
+            />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+         app:cardBackgroundColor="@null"
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        app:cardElevation="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        >
+
+        <com.redlable.qrcodescanner.feature.common.view.IconButtonWithText
+            android:id="@+id/button_clipboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_copy"
+            app:iconBackground="@color/green"
+            app:isArrowVisible="false"
+            app:text="@string/fragment_create_barcode_qr_code_clipboard" />
+    </androidx.cardview.widget.CardView>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view_barcode"
+        style="@style/ScrollStyle"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_margin_small"
+            android:orientation="vertical"
+            android:id="@+id/barCodeTab"
+            >
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                >
+
+                <androidx.cardview.widget.CardView
+                             android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                     app:cardBackgroundColor="@null"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_data_matrix"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_data_matrix"
+                        app:iconBackground="@color/orange"
+                        app:text="@string/barcode_format_data_matrix"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for URL Button -->
+                <androidx.cardview.widget.CardView
+                             android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardBackgroundColor="@null"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_aztec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_aztec"
+                        app:iconBackground="@color/orange"
+                        app:text="@string/barcode_format_aztec"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for Wifi Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_itf_14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_barcode"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_format_itf_14"
+                        app:isDelimiterVisible="false"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for Location Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_pdf_417"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_pdf417"
+                        app:iconBackground="@color/orange"
+                        app:text="@string/barcode_format_pdf_417"
+                        app:isDelimiterVisible="false"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for Contact Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_codabar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_barcode"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_format_codabar"
+                        />
+
+                </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_code_39"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_barcode"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_format_code_39"
+                    />
+            </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_code_93"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_barcode"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_format_code_93"
+                    />
+            </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp">
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_code_128"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_barcode"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_format_code_128"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp">
+
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_upc_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_barcode"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_format_upc_a"
+                        />
+            </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_upc_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_barcode"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_format_upc_e"
+                    />
+            </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardElevation="4dp"
+                android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_ean_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_barcode"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_format_ean_8"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_ean_13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_barcode"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_format_ean_13"
+                        />
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        style="@style/ScrollStyle"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_margin_small"
+            android:orientation="vertical"
+            android:id="@+id/qrCodeTab"
+            >
+
+            <!-- QR Code Section -->
+
+
+            <!-- CardView for Clipboard Button -->
+
+            <!-- Simplified GridLayout for QR code buttons -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                >
+
+
+
+                <!-- CardView for Text Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_text"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/fragment_create_barcode_qr_code_text"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for URL Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_link"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_schema_url"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for Wifi Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_wifi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_wifi"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_schema_wifi"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for Location Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_location"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_schema_geo"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- CardView for Contact Button -->
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_otp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_otp"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_schema_otp"
+                        />
+
+                </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_contact_mecard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_contact"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_me_card"
+                    />
+                </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_app"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_google_play"
+                    app:isDelimiterVisible="false"
+                    />
+                </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_bookmark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_bookmark"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_bookmark"
+                    />
+
+            </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_cryptocurrency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_bitcoin"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_cryptocurrency"
+                    />
+                </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_sms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_sms"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_sms"
+                    />
+                </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_mms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_mms"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_mms"
+                    />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                     app:cardBackgroundColor="@null"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                        android:id="@+id/button_contact_vcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_contact"
+                        app:iconBackground="@color/blue3"
+                        app:text="@string/barcode_schema_v_card"
+                        />
+                </androidx.cardview.widget.CardView> <androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_calendar"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_v_event"
+                    />
+                </androidx.cardview.widget.CardView> <androidx.cardview.widget.CardView
+                 app:cardBackgroundColor="@null"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_phone"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_phone"
+                    />
+                </androidx.cardview.widget.CardView>
+ <androidx.cardview.widget.CardView
+      app:cardBackgroundColor="@null"
+             android:background="?attr/selectableItemBackgroundBorderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                <com.redlable.qrcodescanner.feature.common.view.IconButtonWithDelimiter
+                    android:id="@+id/button_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_email"
+                    app:iconBackground="@color/blue3"
+                    app:text="@string/barcode_schema_email"
+                    />
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
